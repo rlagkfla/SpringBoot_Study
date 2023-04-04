@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class BoardController {
@@ -24,9 +25,9 @@ public class BoardController {
     }
 
     @PostMapping("/board/writepro")
-    public String boardWritePro(Board board, Model model){
+    public String boardWritePro(Board board, Model model, MultipartFile file) throws Exception{
         
-        boardService.write(board);
+        boardService.write(board, file);
 
         model.addAttribute("message", "글 작성 완료");
         model.addAttribute("searchUrl", "/board/list");
@@ -67,15 +68,16 @@ public class BoardController {
         return "boardmodify";
     }
 
-    @PostMapping("/board/update/{id}")
-    public String boardUpdate(@PathVariable Integer id, Board board, Model model){
+    @PostMapping("/board/update/{id}") // NullPointException 발생. 해결 필요 -> 1. 서비스 write 메소드 board와 file을 나눠서 따로 메소드 만들어야 할 듯
+                                       // 2. boardmodify.html 에 업로드 정보 불러오기
+    public String boardUpdate(@PathVariable Integer id, Board board, Model model, MultipartFile file) throws Exception{
 
         Board boardTemp = boardService.boardView(id);
 
         boardTemp.setTitle(board.getTitle());
         boardTemp.setContent(board.getContent());
 
-        boardService.write(boardTemp);
+        boardService.write(boardTemp, file);
 
         model.addAttribute("message", "글 수정 완료");
         model.addAttribute("searchUrl", "/board/list");

@@ -22,6 +22,12 @@ public class BoardController {
     @Autowired
     private BoardService boardService;
 
+    @GetMapping("/board/main")
+    public String main(){
+
+        return "main";
+    }
+
     @GetMapping("/board/write") // localhost:8080/board/write
     public String boardWriteForm(){
 

@@ -34,6 +34,8 @@
     <input type="file" name="file">
     <button type="submit">수정</button>
   </form>
+  <br>
+  <button th:onclick="|location.href='@{/board/view(id=${board.id})}'|">취소</button>
 
 </div>
 </body>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>게시물 작성폼</title>
@@ -34,7 +34,8 @@
             <input type="file" name="file">
             <button type="submit">작성</button>
         </form>
-
+        <br>
+        <button th:onclick="|location.href='@{/}'|">취소</button>
     </div>
 </body>
 </html>

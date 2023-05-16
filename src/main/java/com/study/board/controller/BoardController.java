@@ -22,7 +22,7 @@ public class BoardController {
     @Autowired
     private BoardService boardService;
 
-    @GetMapping("/board/main")
+    @GetMapping("/")
     public String main(){
 
         return "main";

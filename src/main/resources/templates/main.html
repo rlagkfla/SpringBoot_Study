@@ -18,9 +18,9 @@
     </div>
     <br>
     <div sec:authorize="isAuthenticated()">
-<!--        <a href="#;" th:field="${users.username}">회원명</a>-->
+        <a href="#;">회원명</a>
         <span> | </span>
-        <a th:href="@{/logout}" th:field="logout">로그아웃</a>
+        <a th:href="@{/logout}">로그아웃</a>
 
     </div>
 <!--    <form action="/logout" method="post">-->

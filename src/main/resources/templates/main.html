@@ -18,9 +18,12 @@
     </div>
     <br>
     <div sec:authorize="isAuthenticated()">
-        <a href="#;">회원명</a>
+<!--        <p th:text="${users.username}">회원명</p>-->
+        <a th:href="@{/mypage}">마이페이지</a>
         <span> | </span>
         <a th:href="@{/logout}">로그아웃</a>
+        <span> | </span>
+        <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin}">관리자 페이지</a>
 
     </div>
 <!--    <form action="/logout" method="post">-->

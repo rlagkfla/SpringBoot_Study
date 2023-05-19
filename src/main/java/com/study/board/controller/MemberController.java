@@ -16,8 +16,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+
+
 @Controller
 public class MemberController {
+
 
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -39,13 +42,46 @@ public class MemberController {
         return "login";
     }
 
+//    @PostMapping("/loginProc")
+//    public String loginProc(Model model, Integer id){
+//
+//        model.addAttribute("users", memberDetailsService.main(id));
+//
+//        return "/";
+//    }
+
+    @GetMapping("/mypage")
+    public String myPage(Model model) {
+
+        return "mypage";
+    }
+
+    @GetMapping("/admin")
+    public String admin(Model model) {
+
+        return "admin";
+    }
+
     @PostMapping("/joinProc")
     public String joinProc(Users user) {
         String rawPassword = user.getPassword();
         String encPassword = bCryptPasswordEncoder.encode(rawPassword);
         user.setPassword(encPassword);
 
-        user.setRole("ROLE_USER");
+        String username = user.getUsername();
+
+        //System.out.println("이름 : " + username);
+
+
+        if(("admin").equals(username)){
+            System.out.println(11);
+
+            user.setRole("ROLE_ADMIN");
+        }else{
+            System.out.println(22);
+            user.setRole("ROLE_USER");
+        }
+
         userRepository.save(user);
 
         return "redirect:/"; // main으로 이동

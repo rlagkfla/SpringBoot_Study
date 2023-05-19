@@ -31,7 +31,7 @@ public class WebSecurityConfig { //extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable()
                 .authorizeRequests()
-                .requestMatchers("/board/**").hasRole("USER")  // USER, ADMIN만 접근 가능
+                .requestMatchers("/board/**").authenticated()  //
                 //.requestMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
                 .requestMatchers("/admin/**").hasRole("ADMIN")  // ADMIN만 접근 가능
                 .anyRequest().permitAll()
@@ -39,6 +39,7 @@ public class WebSecurityConfig { //extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/loginProc")
+                .usernameParameter("username")
                 .defaultSuccessUrl("/")
                 .and()
                 .logout()

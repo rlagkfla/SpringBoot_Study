@@ -25,5 +25,9 @@ public class MemberDetailsService implements UserDetailsService {
         return null;
     }
 
+//    public Users main(Integer id){
+//        return userRepository.findById(id).get();
+//    }
+
 
 }

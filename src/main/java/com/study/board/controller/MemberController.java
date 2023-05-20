@@ -111,4 +111,14 @@ public class MemberController {
 //        return "main";
 //    }
 
+
+    // bootstrap demo
+    @GetMapping("/example")
+    public String bootstrap(Model model) {
+
+        return "/layout/example";
+    }
+
+
+
 }

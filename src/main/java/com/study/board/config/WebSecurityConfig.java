@@ -31,14 +31,14 @@ public class WebSecurityConfig { //extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable()
                 .authorizeRequests()
-                .requestMatchers("/board/**").authenticated()  //
+                .requestMatchers("/board/**").authenticated()  // 권한에 상관없이 로그인 필요
                 //.requestMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
                 .requestMatchers("/admin/**").hasRole("ADMIN")  // ADMIN만 접근 가능
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .loginProcessingUrl("/loginProc")
+//                .loginProcessingUrl("/loginProc")
                 .usernameParameter("username")
                 .defaultSuccessUrl("/")
                 .and()

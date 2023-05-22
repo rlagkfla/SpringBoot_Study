@@ -119,6 +119,25 @@ public class MemberController {
         return "/layout/example";
     }
 
+    // test
+    @GetMapping("/test")
+    public String test(Model model) {
+
+        return "/layout/header";
+    }
+
+    @GetMapping("/test2")
+    public String test2(Model model) {
+
+        return "/layout/footer";
+    }
+
+    @GetMapping("/test3")
+    public String test3(Model model) {
+
+        return "/layout/default_layout";
+    }
+
 
 
 }

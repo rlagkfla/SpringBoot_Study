@@ -1,34 +1,35 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>게시글 리스트 페이지</title>
-</head>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+    <title>게시판</title>
+<!--</head>-->
+<th:block th:replace="layout/header :: headerFragment"></th:block>
 
-<style>
+<!--<style>-->
 
-    .layout {
-        width : 500px;
-        margin : 0 auto;
-        margin-top : 40px;
-    }
+<!--    .layout {-->
+<!--        width : 500px;-->
+<!--        margin : 0 auto;-->
+<!--        margin-top : 40px;-->
+<!--    }-->
 
-</style>
+<!--</style>-->
 
 <body>
 
     <div class="layout">
 
-        <table>
-            <thead>
+        <table class="table">
+            <thead  class="table-light">
                 <tr>
-                    <th>글번호</th>
-                    <th>제목</th>
+                    <th scope="col">NO.</th>
+                    <th scope="col">SUBJECT</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="table-group-divider">
                 <tr th:each="board : ${list}">
-                    <td th:text="${board.id}">1</td>
+                    <th scope="row" th:text="${board.id}">1</th>
                     <td>
                         <a th:text="${board.title}" th:href="@{/board/view(id=${board.id})}"></a>
                     </td>
@@ -36,17 +37,27 @@
             </tbody>
         </table>
 
+
         <th:block th:each = "page : ${#numbers.sequence(startPage, endPage)}">
             <a th:if = "${page != nowPage}" th:href ="@{/board/list(page = ${page - 1}, searchKeyword = ${param.searchKeyword})}" th:text = "${page}"></a>
             <strong th:if = "${page == nowPage}" th:text = "${page}" style="color : red"></strong>
         </th:block>
-        <form th:action="@{/board/list}" method="get">
-            <input type="text" name="searchKeyword">
-            <button type="submit">검색</button>
-        </form>
+
+        <nav class="navbar bg-light">
+            <div class="container-fluid">
+                <form class="d-flex" role="search" th:action="@{/board/list}" method="get">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchKeyword">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+
         <br>
-        <button th:onclick="|location.href='@{/}'|">메인으로</button>
+        <button class="btn btn-outline-success" th:onclick="|location.href='@{/}'|">메인으로</button>
 
     </div>
 </body>
+
+<th:block th:replace="layout/footer :: footerFragment"></th:block>
+
 </html>

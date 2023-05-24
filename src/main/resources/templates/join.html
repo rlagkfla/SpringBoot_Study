@@ -1,17 +1,29 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>회원가입 페이지</title>
-</head>
+<html xmlns:th="http://thymeleaf.org">
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+  <title>회원가입</title>
+<!--</head>-->
+
+<th:block th:replace="layout/header :: headerFragment"></th:block>
+
 <body>
-<h1>회원가입 페이지</h1>
-<hr/>
+
+<br>
+
 <form action="/joinProc" method="post">
   <input type="text" name="username" placeholder="Username"/> <br/>
   <input type="password" name="password" placeholder="Password"/> <br/>
   <input type="email" name="email" placeholder="Email"/> <br/>
-  <button type="submit">회원가입</button>
+  <button class="btn btn-outline-success" type="submit">회원가입</button>
 </form>
+
+<br>
+
+<button class="btn btn-outline-success" th:onclick="|location.href='@{/}'|">메인으로</button>
+
 </body>
+
+<th:block th:replace="layout/footer :: footerFragment"></th:block>
+
 </html>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
-<head>
-  <meta charset="UTF-8">
-  <title>게시물 작성폼</title>
-</head>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<!--<head>-->
+<!--  <meta charset="UTF-8">-->
+  <title>게시물 작성</title>
+<!--</head>-->
 
 <style>
     .layout {
@@ -25,6 +25,8 @@
 
 </style>
 
+<th:block th:replace="layout/header :: headerFragment"></th:block>
+
 <body>
 
 <div class="layout">
@@ -39,4 +41,7 @@
 
 </div>
 </body>
+
+<th:block th:replace="layout/footer :: footerFragment"></th:block>
+
 </html>

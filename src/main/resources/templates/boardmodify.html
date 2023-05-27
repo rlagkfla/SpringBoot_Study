@@ -28,7 +28,7 @@
 <th:block th:replace="layout/header :: headerFragment"></th:block>
 
 <body>
-
+<h1>modify test</h1>
 <div class="layout">
   <form th:action="@{/board/update/{id}(id=${board.id})}" method="post" enctype="multipart/form-data">
     <input name="title" type="text" th:value="${board.title}">

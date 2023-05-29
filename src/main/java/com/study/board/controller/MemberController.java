@@ -87,30 +87,6 @@ public class MemberController {
         return "redirect:/"; // main으로 이동
     }
 
-//    @PostMapping(value = "/logout")
-//    public String logoutPage(HttpServletRequest request, HttpServletResponse response, Model model) {
-//
-//        new SecurityContextLogoutHandler().logout(request, response,
-//                SecurityContextHolder.getContext().getAuthentication());
-//
-//        model.addAttribute("message","로그아웃 완료");
-//        model.addAttribute("searchUrl","/");
-//
-//        return "redirect:message";
-//
-//    }
-//    @GetMapping("/logout")
-//    public String logout(HttpServletRequest request, HttpServletResponse response){
-//
-//        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-//
-//        if(authentication != null){
-//            new SecurityContextLogoutHandler().logout(request,response,authentication);
-//        }
-//
-//        return "main";
-//    }
-
 
     // bootstrap demo
     @GetMapping("/example")

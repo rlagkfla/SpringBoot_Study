@@ -25,6 +25,7 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("org.thymeleaf.extras:thymeleaf-extras-springsecurity6")
 	implementation ("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect")
+	implementation ("org.springframework.boot:spring-boot-starter-oauth2-client")
 	compileOnly("org.projectlombok:lombok")
 	runtimeOnly("com.oracle.database.jdbc:ojdbc8")
 	annotationProcessor("org.projectlombok:lombok")
